@@ -1,19 +1,29 @@
 <template>
   <div id="app">
     <img id="logo" src="./assets/logo.png">
+    <p>==> {{ message }}</p>
+    <input type="type" v-model="message">
     <QA/>
+    <Test/>
     <HelloWorld/>
   </div>
 </template>
 
 <script>
 import QA from './components/QA'
+import Test from './components/Test'
 import HelloWorld from './components/HelloWorld'
 
 export default {
   name: 'App',
+  data() {
+    return {
+      message: "hogehoge"
+    }
+  },
   components: {
     QA,
+    Test,
     HelloWorld
   }
 }

@@ -11,13 +11,18 @@
   </div> -->
   <div id="question">
     <p>QA vue</p>
-    <p>test</p>
+    <p>{{ data }}</p>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'QA'
+  name: 'QA',
+  data() {
+    return {
+      data: "hihi"
+    }
+  }
 }
 </script>
 
