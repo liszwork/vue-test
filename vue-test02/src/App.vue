@@ -3,6 +3,7 @@
     <img id="logo" src="./assets/logo.png">
     <p>==> {{ message }}</p>
     <input type="type" v-model="message">
+    <!-- <input @input="onInput" /> -->
     <QA/>
     <Test/>
     <HelloWorld/>
@@ -20,6 +21,13 @@ export default {
     return {
       message: "hogehoge"
     }
+  },
+  methods: {
+    // これがv-modelの中身
+    // onInput(event) {
+    //   const text = event.target.value;
+    //   this.message = text;
+    // }
   },
   components: {
     QA,
