@@ -1,19 +1,16 @@
 <template>
   <div id="app">
     <img id="logo" src="./assets/logo.png">
-    <QA/>
     <Test/>
   </div>
 </template>
 
 <script>
-import QA from './components/QA'
 import Test from './components/Test'
 
 export default {
   name: 'App',
   components: {
-    QA,
     Test,
   }
 }
