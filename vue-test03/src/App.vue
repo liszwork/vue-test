@@ -17,6 +17,7 @@
     </div>
     <div class="content">
       <h2>子→親メソッド</h2>
+      <button @click="hello">click</button>
       <Child4 />
     </div>
   </div>

@@ -2,26 +2,21 @@
   <div id="child" class="content">
     <h3>Child4</h3>
     <button value="click" @click="$emit('hello')">parent message</button>
+    <button @click="callParentMethod">parent message</button>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Child3",
+  name: "Child4",
   data() {
     return {
       cnt: 0
     }
   },
   methods: {
-    change(event) {
-      const msgs = [ "hoge", "huga", "piyo" ];
-      this.$parent.hoge = msgs[this.cnt];
-      this.cnt++;
-      if ( this.cnt >= msgs.length)
-      {
-        this.cnt = 0;
-      }
+    callParentMethod(event) {
+      this.$emit("hello");
     }
   }
 };
