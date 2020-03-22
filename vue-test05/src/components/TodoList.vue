@@ -55,6 +55,7 @@ export default {
       this.lastId++;
       this.addItemData();
       this.addText = "";
+      this.save();
     },
     onDelete(event) {
       console.log("onDelete");
@@ -62,8 +63,32 @@ export default {
       this.item = this.todos.filter(function (item) {
         console.log(item.content);
         return item.isChecked === false;
-      })
+      });
+      this.save();
     },
+    save() {
+      localStorage.setItem('todos', JSON.stringify(this.todos));
+    },
+    load() {
+      console.log('load');
+      this.todos = JSON.parse(localStorage.getItem('todos'));
+      if (!this.todos) {
+      console.log(' No data');
+        this.todos = [];
+      }
+      else {
+        let i = this.todos.length - 1;
+        this.lastId = thiss.todos[i].id;
+      console.log(' last id ' + this.lastId);
+      }
+    },
+    created: function() {
+      console.log('created');
+    },
+    mounted: function () {
+      console.log('mounted');
+      this.load();
+    }
   }
 };
 </script>
