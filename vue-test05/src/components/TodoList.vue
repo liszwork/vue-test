@@ -1,15 +1,23 @@
+// Todo List refs.
+// https://qiita.com/moonglows76/items/358ef3cd1566c38ece3a
 <template>
   <div class="content">
     <h1>Todo list</h1>
+
     <div id="addTodoForm">
       <input type="text" v-model="addText" />
       <button @click="onAdd">add</button>
     </div>
+
+
+
+
     <div id="todoContents">
       <ul>
         <li class="todoContent" v-for="(todo, index) in todos" :key="todos.content">
-          <div>{{ todo.id }} - {{ todo.content }}</div>
-          <button @click="onComplet">complet</button>
+          <label v-bind:class="{ done: todo.isChecked }">
+            <input type="checkbox" name="" id="" v-model="todo.isChecked">{{ todo.content }}
+          </label>
           <button @click="onDelete">delete</button>
         </li>
       </ul>
@@ -22,32 +30,39 @@ export default {
   name: "TodoList",
   data() {
     return {
+      chk: false,
       addText: "",
-      lastId: 0,
+      lastId: 1,
       todos: [
-        { id:0, content:"test" }
+        { id:0, content:"test", isChecked: true }
       ]
     };
   },
   methods: {
+    addItemData() {
+      let item = {
+        id: this.lastId,
+        content: this.addText,
+        isChecked: false,
+      };
+      this.todos.push(item);
+    },
     onAdd(event) {
       if (!this.addText) {
         console.log("[ERR]addText is empty.");
         return;
       }
       this.lastId++;
-      let addItem = {
-        id: this.lastId,
-        content: this.addText
-      };
-      this.todos.push(addItem);
+      this.addItemData();
       this.addText = "";
     },
-    onComplet(event) {
-      console.log("onComplet")
-    },
     onDelete(event) {
-      console.log("onDelete")
+      console.log("onDelete");
+      // クリックされたオブジェクトを操作
+      this.item = this.todos.filter(function (item) {
+        console.log(item.content);
+        return item.isChecked === false;
+      })
     },
   }
 };
@@ -56,5 +71,8 @@ export default {
 <style>
 .todoContent {
   border: 1px solid white;
+}
+.done {
+  text-decoration: line-through;
 }
 </style>
