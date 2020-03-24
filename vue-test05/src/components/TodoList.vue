@@ -11,6 +11,7 @@ https://qiita.com/k_yumoto/items/d2026128a08ed8fab22c
     <div id="addTodoForm">
       <input type="text" v-model="addText" />
       <button @click="onAdd">add</button>
+      <button @click="onClear">clear</button>
     </div>
 
     <div id="todoContents">
@@ -58,12 +59,15 @@ export default {
       this.save();
     },
     onDelete(event) {
-      console.log("onDelete");
       // クリックされたオブジェクトを操作
       this.item = this.todos.filter(function(item) {
         console.log(item.content);
         return item.isChecked === false;
       });
+      this.save();
+    },
+    onClear(event) {
+      this.todos = [];
       this.save();
     },
     save() {
