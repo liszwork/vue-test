@@ -10,10 +10,14 @@ https://qiita.com/shingorow/items/97c265d4cab33cb13b6c
   <div class="content">
     <h1>Todo list</h1>
 
+    <nav>
+      <button @click="onDelete">delete checked Todos</button>
+      <button @click="onClear">clear all Todos</button>
+    </nav>
+
     <div id="addTodoForm">
       <input type="text" v-model="addText" />
-      <button @click="onAdd">add</button>
-      <button @click="onClear">clear</button>
+      <button @click="onAdd">add Todo</button>
     </div>
 
     <div id="todoContents">
@@ -23,7 +27,6 @@ https://qiita.com/shingorow/items/97c265d4cab33cb13b6c
             <input type="checkbox" name id v-model="todo.isChecked" />
             {{ todo.content }}
           </label>
-          <button @click="onDelete">delete</button>
         </li>
       </ul>
     </div>
@@ -38,7 +41,7 @@ export default {
       chk: false,
       addText: "",
       lastId: 0,
-      todos: []
+      todos: [],
     };
   },
   methods: {
@@ -61,9 +64,8 @@ export default {
       this.save();
     },
     onDelete(event) {
-      // クリックされたオブジェクトを操作
-      this.item = this.todos.filter(function(item) {
-        console.log(item.content);
+      this.todos = this.todos.filter(function(item) {
+        // isCheckedがfalseのみフィルタリングして、itemにセットし直してる？
         return item.isChecked === false;
       });
       this.save();
@@ -88,7 +90,7 @@ export default {
         this.lastId = this.todos[i].id;
         console.log(" last id " + this.lastId);
       }
-    }
+    },
   },
   created() {
     console.log("created");
