@@ -82,10 +82,10 @@ export default {
       }
     }
   },
-  created: function() {
+  created() {
     console.log("created");
   },
-  mounted: function() {
+  mounted() {
     console.log("mounted");
     this.load();
   }
