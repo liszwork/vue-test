@@ -3,6 +3,8 @@ Todo List refs.
 https://qiita.com/moonglows76/items/358ef3cd1566c38ece3a
 Browser local storage check
 https://qiita.com/k_yumoto/items/d2026128a08ed8fab22c
+Local storage
+https://qiita.com/shingorow/items/97c265d4cab33cb13b6c
 -------------------------------------------------------*/
 <template>
   <div class="content">
@@ -35,8 +37,8 @@ export default {
     return {
       chk: false,
       addText: "",
-      lastId: 1,
-      todos: [{ id: 0, content: "test", isChecked: true }]
+      lastId: 0,
+      todos: []
     };
   },
   methods: {
@@ -68,6 +70,7 @@ export default {
     },
     onClear(event) {
       this.todos = [];
+      this.lastId = 0;
       this.save();
     },
     save() {
@@ -76,10 +79,11 @@ export default {
     load() {
       console.log("load");
       this.todos = JSON.parse(localStorage.getItem("todos"));
-      if (!this.todos) {
+      if (!this.todos.length) {
         console.log(" No data");
         this.todos = [];
       } else {
+        console.log(" find data");
         let i = this.todos.length - 1;
         this.lastId = this.todos[i].id;
         console.log(" last id " + this.lastId);
