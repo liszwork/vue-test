@@ -19,6 +19,10 @@
     <TodoList v-if="currentPage === 2" />
 
     <button class="menu-button" name="0" v-if="currentPage > 0" @click="selectedMenu">back</button>
+
+    <div class="footer">
+      <p>copyright(c) 2020 lis</p>
+    </div>
   </div>
 </template>
 
@@ -33,7 +37,7 @@ export default {
   },
   data() {
     return {
-      currentPage: 0,
+      currentPage: 2,
     }
   },
   methods: {
