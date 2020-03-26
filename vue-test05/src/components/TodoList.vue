@@ -7,8 +7,12 @@ Local storage
 https://qiita.com/shingorow/items/97c265d4cab33cb13b6c
 CSS - list
 https://saruwakakun.com/html-css/reference/ul-ol-li-design
+CSS - input focus
+http://portaltan.hatenablog.com/entry/2015/08/07/180212
 CSS - checkbox
 https://kodocode.net/design-css-checkbox/
+Color pattern
+https://www.happyhues.co/palettes/4
 -------------------------------------------------------*/
 <template>
   <div class="content">
@@ -18,12 +22,12 @@ https://kodocode.net/design-css-checkbox/
 
     <div class="input-form">
       <div id="add-todo-form">
-        <input type="text" v-model="addText" />
-        <button @click="onAdd">add Todo</button>
+        <input type="text" class="todo-input" v-model="addText" />
+        <button class="todo-button add-button" @click="onAdd">add Todo</button>
       </div>
       <div class="function-menu">
-        <button @click="onDelete">delete checked Todos</button>
-        <button @click="onClear">clear all Todos</button>
+        <button class="todo-button delete-button" @click="onDelete">clear</button>
+        <button class="todo-button all-clear-button" @click="onClear">all clear</button>
       </div>
     </div>
 
@@ -114,6 +118,44 @@ export default {
   margin-left: 30px;
   margin-right: 30px;
 }
+
+.input-form {
+  width: 600px;
+}
+.input-form *:focus {
+  outline: 0;
+  border: 1px solid #7f5af0;
+}
+
+.todo-input {
+  padding: 0.5em 0.5em 0.5em 1.5em;
+  position: relative;
+  background: #16161a;
+  border-radius: 5px 5px 5px 5px;
+  border: 1px solid white;
+}
+.todo-input:focus {
+  outline: 0;
+  border: 1px solid #7f5af0;
+}
+.todo-button  {
+  padding: 0.5em 1.5em 0.5em 0.5em;
+  border: 1px solid white;
+  text-align: center;
+  background: #7f5af0;
+  color: #fffffe;
+  border-radius: 5px 5px 5px 5px;
+}
+.todo-button:hover  {
+  border: 1px solid #7f5af0;
+}
+.add-button {
+}
+.delete-button {
+}
+.all-clear-button {
+}
+
 ul {
   padding: 0;
 }
@@ -122,7 +164,7 @@ ul {
   padding: 0.5em 0.5em 0.5em 0.5em;
   margin-bottom: 5px;
   line-height: 1.5;
-  background: #505050;
+  background: #2cb67d;
   border-radius: 15px 0px 0px 15px;
   list-style-type: none!important;
   text-align: left;
@@ -132,11 +174,11 @@ ul {
   vertical-align: middle;
 }
 .todo-content:hover {
-  background: #666;
+  border: 1px solid #2cb67d;
 }
 label {
-  background: #505050;
-  color: #dbebf8;
+  background: #2cb67d;
+  color: #fffffe;
 }
 .todo-content {
   border: 1px solid white;
