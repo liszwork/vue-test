@@ -20,6 +20,11 @@
       <button @click="hello">click</button>
       <Child4 />
     </div>
+    <div class="content">
+      <h2>親子間</h2>
+      <Child5 :msg="toChildMsg" @parentFunc="updateChildMsg" />
+      <p>{{ fromChildMsg }}</p>
+    </div>
   </div>
 </template>
 
@@ -28,6 +33,7 @@ import Child from './components/Child'
 import Child2 from './components/Child2'
 import Child3 from './components/Child3'
 import Child4 from './components/Child4'
+import Child5 from './components/Child5'
 
 export default {
   name: 'App',
@@ -36,17 +42,23 @@ export default {
     Child2,
     Child3,
     Child4,
+    Child5,
   },
   data() {
     return {
       text: 'Hello',
       c3data: 'msg',
       hoge: "-",
+      toChildMsg: "parent message!",
+      fromChildMsg: "",
     }
   },
   methods: {
     hello() {
       console.log("Hello, i'm App.vue!");
+    },
+    updateChildMsg(msg) {
+      this.fromChildMsg = msg;
     }
   }
 }

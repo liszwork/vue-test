@@ -18,8 +18,8 @@ export default {
 
 <style>
 body, div * {
-  background-color: #333;
-  color: #CCC;
+  /* background-color: #333;
+  color: #CCC; */
 }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

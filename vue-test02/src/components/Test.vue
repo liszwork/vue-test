@@ -3,7 +3,7 @@
     <div class="content">
       <h2>v-model</h2>
       <input type="type" v-model="testmsg">
-      <p>:: {{ testmsg }}</p>
+      <p>testmsgの値→ {{ testmsg }}</p>
     </div>
 
     <div class="content">
@@ -28,7 +28,7 @@
       </ul>
       <ul>
         <li v-for="(item, index) in items" :key="item.message">
-          {{ parentMessage }}{{ index }} - {{ item.message }}
+          {{ index }} - {{ item.message }}
         </li>
       </ul>
 
